@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PemesananBarangController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/register', [LoginController::class, 'register']);
     Route::put('/users/{id}', [LoginController::class, 'update']);
     Route::delete('/users/{id}', [LoginController::class, 'destroy']);
+
+    Route::get('/data-barang',[PemesananBarangController::class,'show']);
+    Route::get('/data-barang-all/{id}',[PemesananBarangController::class, 'tampilkanDetailBarang']);
+
 });
 
 

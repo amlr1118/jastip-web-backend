@@ -11,18 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('model_pemesanan_barangs', function (Blueprint $table) {
+        Schema::create('model_barang_keluars', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('userid');
-            $table->string('kode_transaksi')->unique();
-            $table->string('nama_pengirim');
-            $table->string('nomor_hp');
-            $table->string('alamat_pengiriman');
-            $table->string('foto_produk');
+            $table->string('kode_trans')->index();
+            $table->string('berat');
+            $table->string('ongkir');
+            $table->string('nama_kapal');
+            $table->date('estimasi_tiba');
             $table->boolean('status')->default(false);
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('userid')->references('id')->on('users');
+            $table->foreign('kode_trans')->references('kode_transaksi')->on('model_pemesanan_barangs');
         });
     }
 
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('model_pemesanan_barangs');
+        Schema::dropIfExists('model_barang_keluars');
     }
 };

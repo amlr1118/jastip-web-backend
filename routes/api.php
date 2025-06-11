@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [LoginController::class, 'login']);
 
-
+Route::post('/simpan-barang-keluar', [PemesananBarangController::class, 'simpanBarangKeluar']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user', function (Request $request) {
@@ -36,8 +36,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::put('/users/{id}', [LoginController::class, 'update']);
     Route::delete('/users/{id}', [LoginController::class, 'destroy']);
 
-    Route::get('/data-barang',[PemesananBarangController::class,'show']);
-    Route::get('/data-barang-all/{id}',[PemesananBarangController::class, 'tampilkanDetailBarang']);
+    Route::get('/data-barang-masuk',[PemesananBarangController::class, 'tampilkanDataBarangMasuk']);
+    Route::get('/data-barang-all/{id}',[PemesananBarangController::class, 'tampilkanDetailBarangMasuk']);
+
+    Route::get('/data-barang-keluar',[PemesananBarangController::class, 'tampilkanDataBarangKeluar']);
+    Route::put('/update-status-barang/{id}', [PemesananBarangController::class, 'updateStatusBarangMasuk']);
 
 });
 

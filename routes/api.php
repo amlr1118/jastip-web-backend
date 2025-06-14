@@ -23,7 +23,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [LoginController::class, 'login']);
 
-Route::post('/simpan-barang-keluar', [PemesananBarangController::class, 'simpanBarangKeluar']);
+
+
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user', function (Request $request) {
@@ -36,12 +37,17 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::put('/users/{id}', [LoginController::class, 'update']);
     Route::delete('/users/{id}', [LoginController::class, 'destroy']);
 
-    Route::get('/data-barang-masuk',[PemesananBarangController::class, 'tampilkanDataBarangMasuk']);
-    Route::get('/data-barang-all/{id}',[PemesananBarangController::class, 'tampilkanDetailBarangMasuk']);
+    Route::get('/data-barang-masuk',[PemesananBarangController::class, 'tampilkanDataPaketMasuk']);
+    Route::get('/data-barang-all/{id}',[PemesananBarangController::class, 'tampilkanDetailPaketMasuk']);
 
-    Route::get('/data-barang-keluar',[PemesananBarangController::class, 'tampilkanDataBarangKeluar']);
-    Route::put('/update-status-barang/{id}', [PemesananBarangController::class, 'updateStatusBarangMasuk']);
+    //Route::get('/data-barang-keluar',[PemesananBarangController::class, 'tampilkanDataBarangKeluar']);
+    Route::get('/pengiriman_paket', [PemesananBarangController::class,'tampilkanDataPengirimanPaket']);
+    Route::put('/update-status-barang/{id}', [PemesananBarangController::class, 'updateStatusPaketMasuk']);
+    Route::post('/simpan-barang-keluar', [PemesananBarangController::class, 'simpanBarangKeluar']);
+    Route::get('/data-riwayat-barang-keluar', [PemesananBarangController::class, 'tampilkanDataBarangKeluar']);
+    Route::get('/detail-riwayat-barang-keluar/{id}', [PemesananBarangController::class, 'tampilkanDetailBarangKeluar']);
 
+    Route::put('/update-status-pengiriman/{id}', [PemesananBarangController::class, 'updateStatusPengirimanPaket']);
 });
 
 

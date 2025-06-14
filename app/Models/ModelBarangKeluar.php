@@ -16,4 +16,9 @@ class ModelBarangKeluar extends Model
         'nama_kapal',
         'estimasi_tiba',
     ];
+
+    public function relasiBarangMasuk()
+    {
+        return $this->belongsTo(ModelPemesananBarang::class,'kode_trans','kode_transaksi');
+    }
 }

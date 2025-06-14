@@ -16,4 +16,9 @@ class ModelPemesananBarang extends Model
         'alamat_pengiriman',
         'foto_produk',
     ];
+
+    public function relasiBarangMasuk()
+    {
+        return $this->hasMany(ModelBarangKeluar::class);
+    }
 }

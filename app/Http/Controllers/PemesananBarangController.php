@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\BarangResource;
+use App\Http\Resources\RiwayatBarangResource;
 use App\Http\Resources\SemuaBarangResource;
 use App\Models\ModelBarangKeluar;
 use App\Models\ModelPemesananBarang;
@@ -13,21 +14,21 @@ class PemesananBarangController extends Controller
 {
     //
 
-    public function tampilkanDataBarangMasuk()
+    public function tampilkanDataPaketMasuk()
     {
         $barangs = ModelPemesananBarang::where('status', 0)
         ->orderBy('created_at','desc')->get();
         return BarangResource::collection($barangs);
     }
 
-    public function tampilkanDetailBarangMasuk($id)
+    public function tampilkanDetailPaketMasuk($id)
     {
         $barangs = ModelPemesananBarang::where('id', $id)
         ->orderBy('created_at','desc')->get();
         return SemuaBarangResource::collection($barangs);
     }
 
-    public function updateStatusBarangMasuk(Request $request, $id)
+    public function updateStatusPaketMasuk(Request $request, $id)
     {
         $validasi = $request->validate([
             'status' => 'required',
@@ -38,11 +39,19 @@ class PemesananBarangController extends Controller
         return response()->json(['message' => 'Berhasil memproses barang ']);
     }
 
-    public function tampilkanDataBarangKeluar()
+    public function tampilkanDataPengirimanPaket()
     {
         $barangs = ModelPemesananBarang::where('status', 1)
+            ->where('dikirim', 0)
             ->orderBy('created_at','desc')->get();
         return BarangResource::collection($barangs);
+    }
+
+    public function tampilkanDataBarangKeluar()
+    {
+        $barangs = ModelBarangKeluar::with('relasiBarangMasuk')
+            ->orderBy('created_at','desc')->get();
+        return RiwayatBarangResource::collection($barangs);
     }
 
     public  function simpanBarangKeluar(Request $request)
@@ -57,5 +66,24 @@ class PemesananBarangController extends Controller
         ]);
 
         return response()->json($barangs);
+    }
+
+    public function tampilkanDetailBarangKeluar($id)
+    {
+        $barangs = ModelBarangKeluar::with('relasiBarangMasuk')
+            ->where('id', $id)
+            ->orderBy('created_at','desc')->get();
+        return RiwayatBarangResource::collection($barangs);
+    }
+
+    public function updateStatusPengirimanPaket(Request $request, $id)
+    {
+        $validasi = $request->validate([
+            'dikirim' => 'required',
+        ]);
+
+        ModelPemesananBarang::where('id',$id)->update($validasi);
+
+        return response()->json(['message' => 'Berhasil memproses barang ']);
     }
 }

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('alamat_pengiriman');
             $table->string('foto_produk');
             $table->boolean('status')->default(false);
+            $table->boolean('dikirim')->default(false);
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('userid')->references('id')->on('users');

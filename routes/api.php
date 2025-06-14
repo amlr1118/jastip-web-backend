@@ -48,6 +48,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/detail-riwayat-barang-keluar/{id}', [PemesananBarangController::class, 'tampilkanDetailBarangKeluar']);
 
     Route::put('/update-status-pengiriman/{id}', [PemesananBarangController::class, 'updateStatusPengirimanPaket']);
+    Route::put('/batalkan-pengiriman-paket/{id}', [PemesananBarangController::class, 'batalkanPengirimanPaket']);
+    Route::put('/ambil-paket/{id}', [PemesananBarangController::class, 'ambilPaket']);
 });
 
 

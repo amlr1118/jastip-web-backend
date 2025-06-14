@@ -25,6 +25,9 @@ class RiwayatBarangResource extends JsonResource
             'ongkir' => $this->ongkir,
             'nama_kapal' => $this->nama_kapal,
             'estimasi_tiba' => $this->estimasi_tiba,
+            'status' => $this->status,
+            'diambil' => $this->diambil,
+            'tanggal_diambil' => $this->tanggal_diambil,
             'created_at' => Carbon::parse($this->created_at)->format('Y-m-d H:i:s'),
 
         ];

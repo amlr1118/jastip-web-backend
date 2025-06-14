@@ -86,4 +86,28 @@ class PemesananBarangController extends Controller
 
         return response()->json(['message' => 'Berhasil memproses barang ']);
     }
+
+    public function batalkanPengirimanPaket(Request $request,$id)
+    {
+        $validasi = $request->validate([
+            'status' => 'required',
+        ]);
+
+        ModelPemesananBarang::where('id',$id)->update($validasi);
+
+        return response()->json(['message' => 'Berhasil membatalkan pengiriman paket']);
+    }
+
+    public function ambilPaket(Request $request,$id)
+    {
+        $validasi = $request->validate([
+            'status' => 'required',
+            'diambil' => 'required',
+            'tanggal_diambil' => 'required'
+        ]);
+
+        ModelBarangKeluar::where('id',$id)->update($validasi);
+
+        return response()->json(['message' => 'Berhasil mengambil paket']);
+    }
 }

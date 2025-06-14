@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('nama_kapal');
             $table->date('estimasi_tiba');
             $table->boolean('status')->default(false);
+            $table->boolean('diambil')->default(false);
+            $table->date('tanggal_diambil')->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('kode_trans')->references('kode_transaksi')->on('model_pemesanan_barangs');

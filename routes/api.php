@@ -21,9 +21,8 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-Route::post('/login', function () {
-    return response()->json(['message' => 'POST login OK']);
-});
+Route::post('/login', [LoginController::class, 'login']);
+
 
 
 

@@ -21,6 +21,7 @@ class BarangResource extends JsonResource
             'nama_pengirim' => $this->nama_pengirim,
             'nomor_hp' => $this->nomor_hp,
             'alamat_pengiriman' => $this->alamat_pengiriman,
+            'status' => $this->status,
             'dikirim' => $this->dikirim,
 
         ];

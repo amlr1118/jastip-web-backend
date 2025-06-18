@@ -20,6 +20,7 @@ class BarangResource extends JsonResource
             'kode_transaksi' => $this->kode_transaksi,
             'nama_pengirim' => $this->nama_pengirim,
             'nomor_hp' => $this->nomor_hp,
+            'alamat_pengrirman' => $this->alamat_pengiriman
 
         ];
     }

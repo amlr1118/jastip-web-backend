@@ -39,6 +39,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/simpan-paket-masuk',[PemesananBarangController::class,'simpanPaketMasuk']);
     Route::get('/data-barang-masuk',[PemesananBarangController::class, 'tampilkanDataPaketMasuk']);
     Route::get('/data-barang-all/{id}',[PemesananBarangController::class, 'tampilkanDetailPaketMasuk']);
+    Route::get('/paket-user',[PemesananBarangController::class, 'tampilkanPaketMasukUser']);
 
     //Route::get('/data-barang-keluar',[PemesananBarangController::class, 'tampilkanDataBarangKeluar']);
     Route::get('/pengiriman_paket', [PemesananBarangController::class,'tampilkanDataPengirimanPaket']);

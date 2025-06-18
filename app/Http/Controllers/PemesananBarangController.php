@@ -8,6 +8,7 @@ use App\Http\Resources\SemuaBarangResource;
 use App\Models\ModelBarangKeluar;
 use App\Models\ModelPemesananBarang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class PemesananBarangController extends Controller
@@ -28,6 +29,14 @@ class PemesananBarangController extends Controller
             'message' => 'Pengiriman berhasil disimpan',
             'data'    => $paket,
         ]);
+    }
+
+    public function tampilkanPaketMasukUser($id)
+    {
+        $id = Auth::user();
+        $paket = ModelPemesananBarang::where('userid',$id)->get();;
+
+        return BarangResource::collection($paket);
     }
 
     public function tampilkanDataPaketMasuk()

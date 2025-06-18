@@ -31,9 +31,9 @@ class PemesananBarangController extends Controller
         ]);
     }
 
-    public function tampilkanPaketMasukUser($id)
+    public function tampilkanPaketMasukUser()
     {
-        $id = Auth::user();
+        $id = Auth::id();
         $paket = ModelPemesananBarang::where('userid',$id)->get();;
 
         return BarangResource::collection($paket);

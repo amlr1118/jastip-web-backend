@@ -41,7 +41,7 @@ class PemesananBarangController extends Controller
 
     public function tampilkanDetailPengiriman($kode_trans)
     {
-        $paket = ModelPemesananBarang::where('kode_transaksi',$kode_trans)->get();
+        $paket = ModelBarangKeluar::where('kode_trans',$kode_trans)->get();
 
         return RiwayatBarangResource::collection($paket);
     }

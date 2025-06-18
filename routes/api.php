@@ -25,6 +25,10 @@ Route::post('/login', [LoginController::class, 'login']);
 
 Route::post('/simpan-paket-masuk',[PemesananBarangController::class,'simpanPaketMasuk']);
 
+Route::get('/user', function (Request $request) {
+    return User::select('id', 'name', 'email')->get();
+});
+
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user', function (Request $request) {

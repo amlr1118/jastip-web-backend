@@ -26,7 +26,7 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $validasi = $request->validate([
+        $request->validate([
             'email' => 'required|email|max:255',
             'password' => 'required',
         ]);
@@ -34,23 +34,22 @@ class LoginController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
-            return [
+            return response()->json([
                 'errors' => [
-                    'email' => ['Email dan password tidak cocok !']
+                    'email' => ['Email dan password tidak cocok!']
                 ]
-            ];
+            ], 401);
         }
 
-        $user = Auth::user();
+        // Langsung buat token dari user yang ditemukan
         $token = $user->createToken('authToken')->plainTextToken;
 
-        //Auth::login($user);
-
-        return [
+        return response()->json([
             'user' => $user,
-            'token' => $token->plainTextToken
-        ];
+            'token' => $token
+        ]);
     }
+
 
     public function logout(Request $request)
     {

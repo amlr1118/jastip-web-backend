@@ -34,9 +34,16 @@ class PemesananBarangController extends Controller
     public function tampilkanPaketMasukUser()
     {
         $id = Auth::id();
-        $paket = ModelPemesananBarang::where('userid',$id)->get();;
+        $paket = ModelPemesananBarang::where('userid',$id)->get();
 
         return BarangResource::collection($paket);
+    }
+
+    public function tampilkanDetailPengiriman($kode_trans)
+    {
+        $paket = ModelPemesananBarang::where('kode_transaksi',$kode_trans)->get();
+
+        return RiwayatBarangResource::collection($paket);
     }
 
     public function tampilkanDataPaketMasuk()
@@ -63,6 +70,8 @@ class PemesananBarangController extends Controller
 
         return response()->json(['message' => 'Berhasil memproses barang ']);
     }
+
+
 
     public function tampilkanDataPengirimanPaket()
     {

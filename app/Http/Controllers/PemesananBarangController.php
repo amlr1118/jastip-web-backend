@@ -14,6 +14,19 @@ class PemesananBarangController extends Controller
 {
     //
 
+    public function simpanPaketMasuk(Request $request)
+    {
+        $paket = ModelPemesananBarang::create([
+            'userid' => $request->userid,
+            'kode_transaksi' => $request->kode_transaksi,
+            'nama_pengirim' => $request->nama_pengirim,
+            'nomor_hp' => $request->nomor_hp,
+            'alamat_pengiriman' => $request->alamat_pengiriman,
+        ]);
+
+        return response()->json($paket);
+    }
+
     public function tampilkanDataPaketMasuk()
     {
         $barangs = ModelPemesananBarang::where('status', 0)

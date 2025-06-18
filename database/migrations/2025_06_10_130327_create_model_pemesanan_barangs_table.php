@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama_pengirim');
             $table->string('nomor_hp');
             $table->string('alamat_pengiriman');
-            $table->string('foto_produk');
+            $table->string('foto_produk')->nullable();
             $table->boolean('status')->default(false);
             $table->boolean('dikirim')->default(false);
             $table->timestamps();

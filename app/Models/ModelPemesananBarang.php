@@ -10,6 +10,7 @@ class ModelPemesananBarang extends Model
     use HasFactory;
 
     protected $fillable = [
+        'userid',
         'kode_transaksi',
         'nama_pengirim',
         'nomor_hp',

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('foto_produk')->nullable();
             $table->boolean('status')->default(false);
             $table->boolean('dikirim')->default(false);
+            $table->boolean('tiba')->default(false);
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('userid')->references('id')->on('users');

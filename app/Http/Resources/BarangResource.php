@@ -24,7 +24,7 @@ class BarangResource extends JsonResource
             'status' => $this->status,
             'dikirim' => $this->dikirim,
             'tiba' => $this->tiba,
-            'crated_at' => $this->created_at,
+            'created_at' => Carbon::parse($this->created_at)->format('Y-m-d H:i:s'),
         ];
     }
 }

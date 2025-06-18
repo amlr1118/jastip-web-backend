@@ -24,7 +24,10 @@ class PemesananBarangController extends Controller
             'alamat_pengiriman' => $request->alamat_pengiriman,
         ]);
 
-        return response()->json($paket);
+        return response()->json([
+            'message' => 'Pengiriman berhasil disimpan',
+            'data'    => $paket,
+        ]);
     }
 
     public function tampilkanDataPaketMasuk()

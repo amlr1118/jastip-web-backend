@@ -23,7 +23,8 @@ class BarangResource extends JsonResource
             'alamat_pengiriman' => $this->alamat_pengiriman,
             'status' => $this->status,
             'dikirim' => $this->dikirim,
-
+            'tiba' => $this->tiba,
+            'crated_at' => $this->created_at,
         ];
     }
 }

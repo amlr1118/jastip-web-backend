@@ -29,11 +29,9 @@ Route::get('/user', function (Request $request) {
     return User::select('id', 'name', 'email')->get();
 });
 
-
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::get('/user', function (Request $request) {
-        return User::select('id', 'name', 'email')->get();
-    });
+
+
 
     Route::post('/logout', [LoginController::class, 'logout']);
 

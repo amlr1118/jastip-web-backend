@@ -52,6 +52,11 @@ class LoginController extends Controller
         ]);
     }
 
+    public function profile(Request $request)
+    {
+        return response()->json(Auth::user());
+    }
+
 
     public function logout(Request $request)
     {

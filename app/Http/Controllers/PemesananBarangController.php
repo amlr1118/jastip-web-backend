@@ -35,7 +35,7 @@ class PemesananBarangController extends Controller
     {
         $id = Auth::id();
         $paket = ModelPemesananBarang::where('userid',$id)
-            ->orderBy('created_at','asc')
+            ->orderBy('created_at','desc')
             ->get();
 
         return BarangResource::collection($paket);
